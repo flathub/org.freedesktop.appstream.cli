@@ -61,16 +61,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/ximion/appstream.git
-    tag: v0.16.0
-
-# TODO: remove this module once Flatpak has updated to appstreamcli
-# or its appstream-glib copy understands modern AppStream XML and
-# doesn't fail parsing it.
-- name: metainfo-downgrade
-  buildsystem: simple
-  build-options:
-    env:
-      ASCLI_METAINFO_FNAME: '/app/share/metainfo/org.freedesktop.appstream.cli.metainfo.xml'
-  build-commands:
-   - sed -i 's/<em>//g' $ASCLI_METAINFO_FNAME
-   - sed -i 's/<\/em>//g' $ASCLI_METAINFO_FNAME
+    tag: v0.16.2
