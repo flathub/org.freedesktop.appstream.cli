@@ -50,7 +50,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/hughsie/libxmlb.git
-    tag: '0.3.10'
+    tag: '0.3.14'
 
 - name: appstream
   buildsystem: meson
@@ -61,4 +61,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/ximion/appstream.git
-    tag: v0.16.2
+    tag: v1.0.0
