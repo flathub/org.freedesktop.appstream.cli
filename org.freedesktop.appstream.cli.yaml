@@ -62,11 +62,3 @@ modules:
   - type: git
     url: https://github.com/ximion/appstream.git
     tag: v1.0.0
-
-- name: flathub-json
-  buildsystem: simple
-  build-commands:
-    - install -Dm644 flathub.json /app/flathub.json
-  sources:
-  - type: file
-    path: flathub.json
