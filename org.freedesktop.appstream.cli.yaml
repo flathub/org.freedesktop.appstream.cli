@@ -1,7 +1,7 @@
 ---
 app-id: org.freedesktop.appstream.cli
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: appstreamcli
 separate-locales: false
@@ -50,7 +50,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/hughsie/libxmlb.git
-    tag: '0.3.18'
+    tag: '0.3.22'
 
 - name: appstream
   buildsystem: meson
@@ -61,4 +61,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/ximion/appstream.git
-    tag: v1.0.3
+    tag: v1.0.5
