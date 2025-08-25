@@ -8,16 +8,16 @@ Forwarded: not-needed
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/GNUmakefile b/GNUmakefile
-index 98eb1fa..d5e29cd 100644
+index e1403be..8c50ec5 100644
 --- a/GNUmakefile
 +++ b/GNUmakefile
-@@ -170,8 +170,8 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
+@@ -190,8 +190,8 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
  JAVA_CLASSES = $(JAVA_SOURCES:.java=.class)
  JAVA_RUNTIME_CLASSES=$(JAVARUNTIME_SOURCES:.java=.class)
  
--CFLAGS=-O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations
+-CFLAGS=-g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
 -CPPFLAGS=
-+override CFLAGS += -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations
++override CFLAGS += -g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
 +CPPFLAGS?=
  
  INCLUDES=-Iinclude
