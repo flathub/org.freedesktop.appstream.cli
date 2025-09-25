@@ -19,47 +19,50 @@ cleanup:
  - /lib/*.la
 
 modules:
-- name: libyaml
+- name: libfyaml
+  buildsystem: autotools
+  cleanup:
+  - /bin
   sources:
-  - type: git
-    url: https://github.com/yaml/libyaml.git
-    tag: '0.2.5'
+  - type: archive
+    url: https://github.com/pantoniou/libfyaml/releases/download/v0.9/libfyaml-0.9.tar.gz
+    sha256: 7731edc5dfcc345d5c5c9f6ce597133991a689dabede393cd77bae89b327cd6d
 
 - name: snowball
   buildsystem: simple
   build-commands:
-   # NOTE: running this with -j$FLATPAK_BUILDER_N_JOBS fails on the autobuilders!
-   - make -j4
-   - install -Dm644 include/libstemmer.h /app/include/libstemmer.h
-   - cp -d libstemmer.so.* -t /app/lib/
-   - install -Dm644 libstemmer.so /app/lib/libstemmer.so
+  # NOTE: running this with -j$FLATPAK_BUILDER_N_JOBS fails on the autobuilders!
+  - make -j4
+  - install -Dm644 include/libstemmer.h /app/include/libstemmer.h
+  - cp -d libstemmer.so.* -t /app/lib/
+  - install -Dm644 libstemmer.so /app/lib/libstemmer.so
   sources:
-   - type: git
-     url: https://github.com/snowballstem/snowball.git
-     tag: v3.0.1
-   - type: patch
-     path: patches/snowball_build-options.diff
-   - type: patch
-     path: patches/snowball_shared-library.diff
+  - type: git
+    url: https://github.com/snowballstem/snowball.git
+    tag: v3.0.1
+  - type: patch
+    path: patches/snowball_build-options.diff
+  - type: patch
+    path: patches/snowball_shared-library.diff
 
 - name: libxmlb
   buildsystem: meson
   config-opts:
-   - -Dstemmer=true
-   - -Dintrospection=false
-   - -Dgtkdoc=false
+  - -Dstemmer=true
+  - -Dintrospection=false
+  - -Dgtkdoc=false
   sources:
   - type: git
     url: https://github.com/hughsie/libxmlb.git
-    tag: '0.3.22'
+    tag: '0.3.24'
 
 - name: appstream
   buildsystem: meson
   config-opts:
-   - -Dcompose=true
-   - -Dgir=false
-   - -Dapidocs=false
+  - -Dcompose=true
+  - -Dgir=false
+  - -Dapidocs=false
   sources:
   - type: git
     url: https://github.com/ximion/appstream.git
-    tag: v1.0.6
+    tag: v1.1.0
