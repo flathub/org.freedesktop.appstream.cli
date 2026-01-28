@@ -20,13 +20,16 @@ cleanup:
 
 modules:
 - name: libfyaml
-  buildsystem: autotools
+  buildsystem: cmake-ninja
+  config-opts:
+  - -DENABLE_NETWORK=OFF
+  - -DENABLE_LIBCLANG=OFF
   cleanup:
   - /bin
   sources:
   - type: archive
-    url: https://github.com/pantoniou/libfyaml/releases/download/v0.9/libfyaml-0.9.tar.gz
-    sha256: 7731edc5dfcc345d5c5c9f6ce597133991a689dabede393cd77bae89b327cd6d
+    url: https://github.com/pantoniou/libfyaml/releases/download/v0.9.3/libfyaml-0.9.3.tar.gz
+    sha256: d4541c36ae726f51e9df22dd8ac1a19d122666060daf3806e37b848d4c73a8ed
 
 - name: snowball
   buildsystem: simple
@@ -62,7 +65,8 @@ modules:
   - -Dcompose=true
   - -Dgir=false
   - -Dapidocs=false
+  - -Dbash-completion=false
   sources:
   - type: git
     url: https://github.com/ximion/appstream.git
-    tag: v1.1.1
+    tag: v1.1.2
