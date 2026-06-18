@@ -19,6 +19,13 @@ cleanup:
  - /lib/*.la
 
 modules:
+- name: check
+  buildsystem: cmake-ninja
+  sources:
+  - type: archive
+    url: https://github.com/libcheck/check/releases/download/0.15.2/check-0.15.2.tar.gz
+    sha256: a8de4e0bacfb4d76dd1c618ded263523b53b85d92a146d8835eb1a52932fa20a
+
 - name: libfyaml
   buildsystem: cmake-ninja
   config-opts:
@@ -28,8 +35,19 @@ modules:
   - /bin
   sources:
   - type: archive
-    url: https://github.com/pantoniou/libfyaml/releases/download/v0.9.3/libfyaml-0.9.3.tar.gz
-    sha256: d4541c36ae726f51e9df22dd8ac1a19d122666060daf3806e37b848d4c73a8ed
+    url: https://github.com/pantoniou/libfyaml/releases/download/v0.9.6/libfyaml-0.9.6.tar.gz
+    sha256: a59cc3331e2eb903ec36933ad52a45888041cac31e44f553a00511131242c483
+
+- name: blake3
+  buildsystem: cmake-ninja
+  builddir: true
+  subdir: c/
+  config-opts:
+  - -DBUILD_SHARED_LIBS:BOOL=YES
+  sources:
+  - type: archive
+    url: https://github.com/BLAKE3-team/BLAKE3/archive/refs/tags/1.8.5.tar.gz
+    sha256: 220bd81286e2a0585beac66d41ac3f4c2c33ae8a4e339fc88cf22d5e00514fe9
 
 - name: snowball
   buildsystem: simple
@@ -57,16 +75,17 @@ modules:
   sources:
   - type: git
     url: https://github.com/hughsie/libxmlb.git
-    tag: '0.3.24'
+    tag: '0.3.27'
 
 - name: appstream
   buildsystem: meson
   config-opts:
   - -Dcompose=true
   - -Dgir=false
+  - -Dman=false
   - -Dapidocs=false
   - -Dbash-completion=false
   sources:
   - type: git
     url: https://github.com/ximion/appstream.git
-    tag: v1.1.2
+    tag: v1.1.3
