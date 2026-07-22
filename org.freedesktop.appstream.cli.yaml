@@ -88,4 +88,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/ximion/appstream.git
-    tag: v1.1.3
+    tag: v1.1.4
